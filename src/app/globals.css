@@ -1,10 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "primeflex/primeflex.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+--primary-color: #00b341;
+  --secondary-color: #f5f5f5;
+  --hover-color: #e0f7fa;
+  --text-color: #333;
 }
 
 @media (prefers-color-scheme: dark) {

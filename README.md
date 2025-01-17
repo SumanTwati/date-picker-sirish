@@ -1,36 +1,143 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NepaliDatePicker Component Documentation
 
-## Getting Started
+## Overview
 
-First, run the development server:
+The **NepaliDatePicker** is a React component designed to provide an interactive date picker supports both **Nepali** and **English** calendar systems. It allows users to select dates in Nepali (Bikram Sambat) or Gregorian (English) formats and provides a callback to handle date changes.
+
+Key Features:
+
+- Dual-language support: **Nepali** and **English**.
+- Displays dates in both Nepali and Gregorian formats.
+- Fully responsive and user-friendly UI.
+- Calendar navigation for months and years.
+- Easily integrates into your React project.
+
+---
+
+## Installation
+
+Install the required dependencies and libraries for the component:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install nepali-date-converter
+npm install @radix-ui/react-popover lucide-react
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ensure you have a compatible CSS framework or import styles for proper display of UI elements.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage
 
-## Learn More
+### Basic Example
 
-To learn more about Next.js, take a look at the following resources:
+```tsx
+import { NepaliDatePicker } from "./components/NepaliDatePicker";
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+function App() {
+  const handleDateChange = (date: { english: string; nepali: string }) => {
+    console.log("Selected Date (English):", date.english);
+    console.log("Selected Date (Nepali):", date.nepali);
+  };
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+  return (
+    <div>
+      <h1>Select a Date</h1>
+      <NepaliDatePicker
+        onDateChange={handleDateChange}
+        defaultValue="2025-01-01"
+        language="np" // or "en"
+      />
+    </div>
+  );
+}
 
-## Deploy on Vercel
+export default App;
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Props Reference
+
+### `NepaliDatePicker`
+
+| Prop           | Type                                                  | Required | Default     | Description                                                                    |
+| -------------- | ----------------------------------------------------- | -------- | ----------- | ------------------------------------------------------------------------------ |
+| `onDateChange` | `(date: { english: string; nepali: string }) => void` | No       | `undefined` | The callback is triggered when the user selects a date. Returns both formats.  |
+| `defaultValue` | `string`                                              | No       | `null`      | Initial date value in ISO format (e.g., `YYYY-MM-DD`).                         |
+| `language`     | \`"np"                                                | "en"\`   | Yes         | Sets the calendar's display language. Use "np" for Nepali or "en" for English. |
+
+---
+
+## Features
+
+### Dual-Language Support
+
+- Display month names, day names, and numerals in **Nepali** or **English**.
+- Toggle between Nepali (Bikram Sambat) and Gregorian calendars seamlessly.
+
+### Navigation
+
+- Navigate by month and year using **arrow buttons**.
+- Leap year and month boundary checks ensure accurate date handling.
+
+### Date Format Conversion
+
+- Automatically converts between Nepali and Gregorian dates.
+- Provide formatted date strings in **MM/DD/YYYY** (English) and **Nepali numeral** formats.
+
+---
+
+## Development Notes
+
+### Dependencies
+
+- **`nepali-date-converter`**: Used to handle date conversions between Nepali and Gregorian calendars.
+- **`@radix-ui/react-popover`**: Manages the popover dropdown for the calendar UI.
+- **`lucide-react`**: Provides the calendar icon.
+
+### Style and Responsiveness
+
+- The component uses a responsive and accessible design.
+- Styling is implemented with utility classes (e.g., Tailwind CSS). Ensure the proper setup of Tailwind or adapt the styles for your project.
+
+### Localization
+
+- Customize day and month names through the `MONTH_NAMES` and `DAY_NAMES` constants.
+- Use `toNepaliNumeral` Convert numbers to Nepali numerals when necessary.
+
+---
+
+## Known Limitations
+
+- The component currently does not support custom themes or styling. Users may override the default styles via Tailwind classes or custom CSS.
+- Events like key navigation for accessibility are not implemented but can be added in future versions.
+
+---
+
+## Changelog
+
+**v1.0.0**
+
+- Initial release.
+- Added Nepali and English calendar support.
+- Implemented basic date selection and formatting functionality.
+- Included responsive popover for date picker UI.
+
+---
+
+## Contribution
+
+We welcome contributions! If you'd like to improve the component, please follow these steps:
+
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature/new-feature`).
+3. Commit your changes (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature/new-feature`).
+5. Open a pull request.
+
+---
+
+## License
+
+This component is licensed under the **MIT License**. See the LICENSE file for details.
