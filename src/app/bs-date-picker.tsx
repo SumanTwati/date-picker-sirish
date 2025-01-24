@@ -450,10 +450,10 @@ export function BSDatePicker({
                 selectedDate ? formatDate(selectedDate, language, format) : ""
               }
               placeholder={format}
-              className="w-[140px] pr-8"
+              className="w-[100px] pr-8"
               readOnly
             />
-            <CalendarIcon className="absolute right-2 top-2.5 h-4 w-4 opacity-50" />
+            <CalendarIcon stroke="#1a1a1a" className="absolute right-0 top-2.5 h-4 w-4 opacity-50" />
           </div>
         </PopoverTrigger>
         <PopoverContent
@@ -466,7 +466,7 @@ export function BSDatePicker({
         >
           <div
             style={{ backgroundColor: "var(--secondary-color)" }}
-            className="mt-1 p-2 rounded-md bg-white"
+            className="mt-1 p-2 pb-0 rounded-md bg-white box-shadow-md"
           >
             {/* Month and Year Header */}
             <div
@@ -535,7 +535,7 @@ export function BSDatePicker({
               </div>
             </div>
             {/* Days Grid */}
-            <div className="grid grid-cols-7 gap-2 text-black pl-3">
+            <div className="grid grid-cols-7 gap-2 text-black p-3">
               {/* Day Names */}
               {DAY_NAMES[language].map((day) => (
                 <div key={day} className="text-center text-xs font-medium p-1">
@@ -597,10 +597,10 @@ export function BSDatePicker({
                 return (
                   <button
                     key={day}
-                    className={`h-8 w-8 rounded text-sm relative 
+                    className={`date h-8 w-8 rounded text-sm relative p-1 hover:bg-gray-100 
                       ${
                         selectedDate?.getDate() === day
-                          ? "rounded bg-primary text-white  hover:bg-gray-100 hover:text-primary"
+                          ?  "date-selected rounded bg-primary text-white hover:text-primary"
                           : ""
                       }`}
                     onClick={() => handleDateSelect(day)}
@@ -610,16 +610,16 @@ export function BSDatePicker({
                         <span
                           className={`absolute top-0 ${
                             day.toString().length === 1 ? "right-3" : "right-2"
-                          } text-[10px]`}
+                          } text-md`}
                         >
                           {toNepaliNumeral(day)}
                         </span>
                         <span
-                          className={`absolute bottom-0 ${
+                          className={`absolute bottom-1 ${
                             usDate.getDate().toString().length === 1
                               ? "right-1"
                               : "right-0"
-                          }  text-[8px] text-gray-600`}
+                          } text-sm`}
                         >
                           {usDate.getDate()}
                         </span>
@@ -629,16 +629,16 @@ export function BSDatePicker({
                         <span
                           className={`absolute top-0 ${
                             day.toString().length === 1 ? "right-3" : "right-2"
-                          } text-[10px]`}
+                          } text-md`}
                         >
                           {day}
                         </span>
                         <span
-                          className={`absolute bottom-0 ${
+                          className={`absolute bottom-1 ${
                             nepaliDate.getDate().toString().length === 1
                               ? "right-1"
                               : "right-0"
-                          }  text-[8px] text-gray-600`}
+                          }  text-sm`}
                         >
                           {toNepaliNumeral(nepaliDate.getDate())}
                         </span>

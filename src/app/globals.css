@@ -11,6 +11,8 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --gray-600: #52525b; 
+    --gray-100: #e6e6e6;
   }
 }
 
@@ -18,4 +20,111 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ---------- Reset -------------- */
+button {
+  all: unset;
+  /* Resets almost all styles (padding, margin, border, background, etc.) */
+  appearance: none;
+  /* Removes default appearance in modern browsers */
+  font: inherit;
+  /* Inherits font properties from parent */
+  color: inherit;
+  /* Inherits text color */
+  cursor: pointer;
+  /* Adds a pointer cursor for buttons */
+}
+
+button:focus {
+  outline: none;
+  /* Removes focus outline */
+}
+
+.grid{
+  display: grid !important;
+}
+
+.grid-cols-7{
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.text-black {
+  color: #0a0a0a;
+}
+
+.h-8 {
+  height: 2rem;
+}
+
+.text-sm{
+  font-size: 10px !important;
+}
+
+.text-md{
+  font-size: 14px !important;
+}
+
+.flex-col{
+  flex-direction: column;
+}
+
+.justify-between{
+    justify-content:space-between ;
+} 
+
+.items-center{
+  align-items: center;
+}
+
+.right-0 {
+  right: 0.25rem !important;
+}
+
+.right-1 {
+  right: 0.25rem !important;
+}
+
+.right-2 {
+  right: 0.5rem !important;
+}
+
+.right-3 {
+  right: 0.75rem !important;
+}
+
+button.date{
+  border-radius: 4px;
+}
+
+button.date span:last-child {
+  color: var(--gray-600);
+}
+
+.date-selected span:last-child {
+  color: var(--gray-100) !important;
+}
+
+.date-selected:hover span:last-child  {
+  color: var(--primary-color) !important;
+}
+
+.top-2\.5 {
+  top: 0.2rem;
+  /* 10px */
+}
+
+.border-input {
+  border-width: 1px;
+  border-color: #d1d5db;
+  border-radius: 0.375rem;
+  outline: none;
+}
+
+.box-shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.rounded-md{
+  border-radius: 8px;
 }
